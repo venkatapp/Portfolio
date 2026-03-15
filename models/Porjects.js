@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 
 const projectSchema = new mongoose.Schema({
   title: String,
-  description: Number,
+  description: String,
   imageKey: String,     
-  imageMimeType: String, 
+  imageMimeType: String,  
   imageSize: Number,     
 })
 
