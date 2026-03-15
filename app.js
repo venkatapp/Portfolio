@@ -3,14 +3,53 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import AdminJS from 'adminjs';
 import AdminJSExpress from '@adminjs/express';
+import uploadFeature from '@adminjs/upload';
 import * as AdminJSMongoose from '@adminjs/mongoose';
 import User from './models/User.js';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
+import { ComponentLoader } from 'adminjs'
+import path from 'path'
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+import Projects from './models/Porjects.js';
+
+const componentLoader = new ComponentLoader();
+
+const uploadFeatures = uploadFeature({
+  componentLoader, // Must be passed here
+  provider: {
+    local: {
+      bucket: path.join(__dirname, 'public/uploads'), // Where files are saved
+    },
+  },
+  properties: {
+    // Virtual property for file upload (not stored in DB)
+    file: 'image',
+    // Where the file path (key) will be stored
+    key: 'imageKey',
+    // Where mime type will be stored (enables previews)
+    mimeType: 'imageMimeType',
+    // Where file size will be stored
+    size: 'imageSize',
+    // Optional: store bucket name
+    bucket: 'imageBucket',
+  },
+  // Optional: Validate file types
+  validation: {
+    mimeTypes: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'],
+  },
+})  
+
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+
+app.use('/uploads', express.static('public/uploads'))
 
 // Register AdminJS adapter for Mongoose
 AdminJS.registerAdapter({
@@ -25,7 +64,20 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Configure AdminJS options with resource customization
 const adminOptions = {
+  componentLoader,
   resources: [
+{
+      resource: Projects,
+      options: {
+        properties: {
+          // Configure how fields appear in AdminJS
+          imageKey: { isVisible: { list: false, show: true, edit: false } },
+          imageMimeType: { isVisible: { list: false, show: true, edit: false } },
+          imageSize: { isVisible: { list: false, show: true, edit: false } },
+        },
+      },
+      features: [uploadFeatures],
+    },
     {
       resource: User,
       options: {
@@ -167,6 +219,8 @@ app.get('/', (req, res) => {
     </html>
   `);
 });
+
+admin.watch();
 
 // Error handling middleware
 app.use((err, req, res, next) => {
