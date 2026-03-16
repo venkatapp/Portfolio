@@ -7,6 +7,7 @@ import uploadFeature from '@adminjs/upload';
 import * as AdminJSMongoose from '@adminjs/mongoose';
 import User from './models/User.js';
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 dotenv.config();
 
 // Import your models - fix the typo if needed
@@ -142,7 +143,7 @@ const adminOptions = {
   ],
   rootPath: '/admin',
   branding: {
-    companyName: 'My Admin Dashboard',
+    companyName: 'Kreative Hussain Dashboard',
     softwareBrothers: false,
     logo: false,
   },
@@ -163,40 +164,46 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 // 2. Session configuration (needed for AdminJS)
 const sessionConfig = {
-  secret: process.env.SESSION_SECRET || 'your-fallback-secret-key-for-development',
+  secret: process.env.COOKIE_PASSWORD || 'your-fallback-secret-key-for-development',
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     maxAge: 24 * 60 * 60 * 1000,
   },
-  name: 'adminjs.sid',
+  name: 'adminjs',
 };
 
 // Apply session middleware
 app.use(session(sessionConfig));
 
-// 3. Authentication options
-const authenticationOptions = {
-  authenticate: async (email, password) => {
-    // TODO: Replace with actual user authentication from database
-    if (email === 'admin@example.com' && password === 'password') {
-      return { 
-        email, 
-        role: 'admin',
-        name: 'Admin User' 
-      };
+// 3. Authentication
+const authenticate  = async (email, password)=>{
+
+  const user=await User.findOne({email})
+  if(user){
+    const matched=await bcrypt.compare(password, user.password);
+    if(matched){
+      return{
+        email:user.email,
+        role:user.role,
+        _id:user._id
+      }
     }
-    return null;
-  },
-  cookiePassword: process.env.COOKIE_SECRET || process.env.SESSION_SECRET || 'your-fallback-cookie-secret',
-};
+  }
+  return null;
+}
 
 // 4. Build and use AdminJS router (this must come BEFORE body-parser)
 const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
   admin,
-  authenticationOptions,
+  {
+    authenticate,
+    cookieName:'adminjs',
+    cookiePassword:process.env.COOKIE_PASSWORD
+
+  },
   null,
   sessionConfig
 );
