@@ -3,3 +3,10 @@ node_modules/
 
 # Environment variables
 .env
+
+# Build and temporary files
+/build/
+/dist/
+target/
+*.log
+*.tmp
