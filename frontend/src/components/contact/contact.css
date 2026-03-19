@@ -1,0 +1,61 @@
+.contact-card {
+    background-color: #080c14 !important;
+}
+
+.contact-card .form-control {
+    background-color: #040712 !important;
+    color: #3c6582 !important;
+    border-color: #576f72 !important;
+    border-width: 1px;
+}
+
+.contact-card .form-control:focus {
+    box-shadow: 0 0 0 .25rem rgba(0, 118, 125, .25) !important;
+}
+.btn[type="submit"]{
+    background-color: transparent !important;
+    color: #00bc7d;
+    border: 2px solid #00bc7d;
+}
+.btn[type="submit"]:hover {
+    background-color: #00bc7d !important;
+    color: white;
+    border: 2px solid transparent;
+}
+.gradient-bar-contact {
+  background-image: linear-gradient(to right, oklch(.718 .202 349.761), oklch(.714 .203 305.504)) !important;
+  width: calc(.25rem * 24);
+  height: calc(.25rem * 1);
+  margin: auto;
+}
+.custom-contact-link{
+    background: #080c14 !important;
+    border: 1px solid #3d3434 !important;
+}
+    .bg-emerald-500
+ {
+        background-color: #063029 !important;
+        color: #01c588 !important;
+}
+.text-gray{
+    color: oklch(.707 .022 261.325);
+}
+.custom-social-link
+{
+    background: #191919 !important;
+    height: 40px;
+    margin: auto 5px;
+    color: #fff !important;
+    width: 40px;
+}
+a.btn.d-flex.custom-contact-link.btn-block:hover{
+    border-color: #00bc7d !important;
+}
+a.custom-icon-btn:hover{
+    background: #00bc7d !important;
+    transform: translateY(-3px);
+}
+.phone-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: underline !important;
+}

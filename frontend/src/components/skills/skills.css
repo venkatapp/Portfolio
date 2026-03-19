@@ -1,0 +1,70 @@
+.skills-bg {
+    background-color: #000;
+}
+
+.skills-card {
+    background-color: #080c14 !important;
+    color: #fff !important;
+    border: 1px solid rgba(7, 199, 146, 0.3) !important;
+}
+.custom-skill-card {
+    position: relative;
+    transition: transform 0.3s ease-in;
+    overflow: hidden;
+}
+.custom-skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.custom-skill-card:hover h5 {
+  color: #00d492;
+}
+.progress {
+    height: 10px;
+    border-radius: 10px;
+    background: 
+ color-mix(in srgb, var(--default-color), transparent 94%);
+ overflow: hidden;
+ background-color: #202122 !important;
+}
+.progress .progress-bar {
+    width: 0;
+    height: 100%;
+    /* background: linear-gradient(90deg, var(--accent-color),
+ color-mix(in srgb, var(--accent-color), #ff6b9d 50%)); */
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+    position: relative;
+}
+.progress,
+.progress-stacked {
+    height: 0.4rem !important;
+}
+.gradient-bar-skills {
+  background-image: linear-gradient(to right, oklch(.714 .203 305.504), oklch(.718 .202 349.761));
+    width: calc(.25rem * 24);
+    height: calc(.25rem * 1);
+    margin: auto;
+}
+.progress-bar.blue {
+  background-image: linear-gradient(to right, oklch(.546 .245 262.881), oklch(.707 .165 254.624));
+}
+.progress-bar.cyan {
+  background-image: linear-gradient(to right, oklch(.609 .126 221.723), oklch(.789 .154 211.53));
+}
+.progress-bar.green {
+  background-image: linear-gradient(to right, oklch(.627 .194 149.214), oklch(83.066% 0.16447 157.7));
+}
+.progress-bar.yellow {
+  background-image: linear-gradient(to right, oklch(.681 .162 75.834), oklch(.852 .199 91.936));
+}
+.progress-bar.pink {
+  background-image: linear-gradient(to right, oklch(.592 .249 .584), oklch(.718 .202 349.761));
+}
+.progress-bar.gray {
+  background-image: linear-gradient(to right, oklch(.446 .03 256.802),oklch(.707 .022 261.325));
+}
+.progress-bar.orrange {
+  background-image: linear-gradient(to right, oklch(.646 .222 41.116),oklch(.75 .183 55.934));
+}
+

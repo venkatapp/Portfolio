@@ -1,0 +1,72 @@
+.heroGredBackground {
+    background-color: red;
+    /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, #000000, #101727, #000);
+    height: 100vh;
+}
+
+.welcome-text {
+    color: #00bc7d;
+}
+
+span.hero-title-gradient-text{
+    font-size: 2rem;
+    background: -webkit-linear-gradient(#fff, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+span.hero-title-gradient-text-2 {
+    font-size: 2rem;
+    background: -webkit-linear-gradient(280deg, #00d393, #4fa4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+span.hero-title-gradient-text-1{
+    font-size: 2rem;
+    background: -webkit-linear-gradient(#3c40c6, #ef5777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+span.hero-title-gradient-text-0 {
+    font-size: 2rem;
+    background: -webkit-linear-gradient(280deg, #c27aff, #bf4e8f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.custom-into-btn{
+    background-color: #00bc7d !important;
+    color:#fff;
+    border:2px solid transparent !important;
+    height: auto !important;
+    min-height: 38px; /* Bootstrap default */
+    line-height: 1.5;
+    transition: all 0.3s ease !important;
+}
+
+.custom-into-btn:hover{
+    background: transparent !important;
+    color: #00d393 !important;
+    border: 2px solid #00d393 !important;
+}
+.social-icons-wrapper .btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons-wrapper .btn i {
+    font-size: 1.2rem;
+}
+a.custom-icon-btn{
+    transition: all 0.3s ease !important;
+}
+a.custom-icon-btn:hover{
+    background: #00bc7d !important;
+    transform: translateY(-3px) !important;
+}

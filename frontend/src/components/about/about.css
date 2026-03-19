@@ -1,0 +1,123 @@
+.about-bg {
+    background-color: #101828;
+}
+
+.gradient-bar {
+  background-image: linear-gradient(to right, #00d492, oklch(.707 .165 254.624));
+    width: calc(.25rem * 24);
+    height: calc(.25rem * 1);
+    margin: auto;
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.about-cards .about-card {
+  background: rgba(0, 0, 0,0.8);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 12px;
+  padding: 32px 24px !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.about-cards .about-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: color-mix(in srgb, #00d492, transparent 50%);
+  box-shadow: 0 8px 32px color-mix(in srgb, rgba(0,0,0,1), transparent 95%);
+}
+
+.about-cards .about-card:hover .about-icon {
+  background: var(--accent-color);
+  color:#00d492;
+  transform: scale(1.5);
+}
+
+.about-cards .about-card:hover .service-link {
+  color: var(--accent-color);
+}
+
+.about-cards .about-card:hover .service-link i {
+  transform: translateX(4px);
+}
+
+.about-cards .about-icon {
+  width: 64px;
+  height: 64px;
+  background: color-mix(in srgb, var(--accent-color), transparent 85%);
+  color: #00d492;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.about-cards .about-icon i {
+  font-size: 24px;
+}
+
+.about-cards h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.about-cards p {
+  flex: 1;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.about-cards .service-link {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--heading-color);
+  transition: all 0.3s ease;
+}
+
+.about-cards .service-link i {
+  margin-left: 8px;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .about-cards .about-card {
+    padding: 24px 20px;
+  }
+
+  .about-cards .about-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+  }
+
+  .about-cards .about-icon i {
+    font-size: 20px;
+  }
+
+  .about-cards h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .about-cards p {
+    margin-bottom: 20px;
+  }
+}
+
+.custom-btn{
+  background: #00d492 !important;
+  color: #212529 !important;
+}
